@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/','HomeController@index');/* function () {
-    return view('pages/home');
-});*/
+Route::get('/','HomeController@index');
+
+Route::get('/cupon/{cuponId}','HomeController@show');

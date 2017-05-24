@@ -48,12 +48,13 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Cupones  $cupones
+     * @param  int  $cupones
      * @return \Illuminate\Http\Response
      */
-    public function show(Cupones $cupones)
+    public function show($cupon)
     {
-        //
+        $cupon = Cupones::where('pageid', $cupon)->first();;
+        return view('pages/infocupon', ['cupon' => $cupon] );
     }
 
     /**

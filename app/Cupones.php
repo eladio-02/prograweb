@@ -16,7 +16,7 @@ class Cupones extends Model
     protected $table = 'cupon';
     protected $fillable = [
     'title', 'subtitle','imgsrc','price','normalprice','save', 'sold', 'city', 'period',
-    'category', 'websitesrc', 'active',
+    'category', 'websitesrc', 'active', 'pageid',
     ];
 
     /**
@@ -25,7 +25,7 @@ class Cupones extends Model
      * @var array
      */
     protected $hidden = [
-        'date', 'pageid',
+        'date',
     ];
     //
 }

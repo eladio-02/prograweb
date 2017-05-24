@@ -6,15 +6,13 @@
     
         @foreach ($cupones as $cu)
         <div id="content" class="col-md-3 well" >
-                {{ str_limit($cu->title, 60) }}
+                <a href="/cupon/{{$cu->pageid}}">{{ str_limit($cu->title, 60) }}</a>
 
                 
                 <hr>
-                <img class="img-responsive" src={{ $cu->imgsrc }} alt="Chania"><br>
-                <h2 class=" center-block">{{ $cu->price }}</h2>
+                <img class="img-responsive" src={{ $cu->imgsrc}} alt="Chania"><br>
+                <h2 class=" center-block">{{ $cu->price }}</h2>               
                 
-                
-                <button type="button" class="btn btn-info center-block">Info</button>
 
                 
             </div>
