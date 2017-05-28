@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/cupones/','CuponesController@index');
+Route::get('/','CuponesController@index')->name('cupones');
+Route::get('/cupones','CuponesController@index');
 
 Route::get('/cupon/{cuponId}','CuponesController@show');
 Route::get('/promocion/','PromocionesController@index');
 Route::get('/promocion/{promoId}','PromocionesController@show');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
