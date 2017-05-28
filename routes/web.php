@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/','HomeController@index');
+Route::get('/cupones/','CuponesController@index');
 
-Route::get('/cupon/{cuponId}','HomeController@show');
+Route::get('/cupon/{cuponId}','CuponesController@show');
 Route::get('/promocion/','PromocionesController@index');
 Route::get('/promocion/{promoId}','PromocionesController@show');

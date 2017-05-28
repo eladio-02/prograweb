@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 
 
-class HomeController extends Controller
+class CuponesController extends Controller
 {
     
     /**
@@ -18,10 +18,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-       // $cuponesDB = Cupones::where('active', '=', 1);//->paginate(16);
-       //Cupones::where('active', '=', 1)->paginate(15)
-        return view('pages/home', ['cupones' => Cupones::simplePaginate(16) ] );
+        return view('pages/cupones', ['cupones' => Cupones::simplePaginate(16) ] );
     }
 
     /**
