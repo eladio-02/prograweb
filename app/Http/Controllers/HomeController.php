@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    
+    public function show()
+    {
+        return view('pages/usuarios', ['usuarios' => Promociones::simplePaginate(10) ] );
+    }
 }

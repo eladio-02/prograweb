@@ -8,6 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
+                    {{ Auth::user()->Tipo }}
                     You are logged in!
                 </div>
             </div>
