@@ -8,44 +8,34 @@
                 <th>Nombre</th>
                 <th>Correo</th>
                 <th>Tipo</th>
+                <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
             @foreach ($usuarios as $user)
-                    @if(user->active == 1)      
+                    @if($user->active == 1)      
                         <tr class="success">
                     @else
-                    
+                        <tr class="warning">
 
-                @endif
-                <td>Success</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-            </tr>
-            <tr class="danger">
-                <td>Danger</td>
-                <td>Moe</td>
-                <td>mary@example.com</td>
-            </tr>
-            <tr class="info">
-                <td>Info</td>
-                <td>Dooley</td>
-                <td>july@example.com</td>
-            </tr>
-            <tr class="warning">
-                <td>Warning</td>
-                <td>Refs</td>
-                <td>bo@example.com</td>
-            </tr>
-            <tr class="active">
-                <td>Active</td>
-                <td>Activeson</td>
-                <td>act@example.com</td>
-            </tr>
-            </tbody>
+                    @endif
+                    
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->email}}</td>
+                    @if($user->Tipo == 1)  
+                        <td>Administrador</td>
+                    @else
+                        <td>Usuario</td>
+                    @endif
+                        <td><button type="button" class="btn btn-danger">Deshabilitar</button>
+                            <button type="button" class="btn btn-success">Guardar</button>
+                        </td>
+                    </tr>
+            
         @endforeach
-        {{ $usuarios->links() }}
+        </tbody>
         </table>
+        {{ $usuarios->links() }}
         
 </div>
 

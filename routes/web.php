@@ -20,3 +20,4 @@ Route::get('/promocion/{promoId}','PromocionesController@show');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/usuarios', 'HomeController@show');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -28,6 +29,6 @@ class HomeController extends Controller
     
     public function show()
     {
-        return view('pages/usuarios', ['usuarios' => Promociones::simplePaginate(10) ] );
+        return view('pages/usuarios', ['usuarios' => User::simplePaginate(10) ] );
     }
 }

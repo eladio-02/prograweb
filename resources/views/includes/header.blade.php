@@ -9,7 +9,7 @@
                 <li><a href="{{ route('register') }}">Register</a></li>
             @else
                 @if (Auth::user()->Tipo == 1)
-                    <li><a href="/cupones">Usuarios</a></li>
+                    <li><a href="/usuarios">Usuarios</a></li>
 
                 @endif    
 
