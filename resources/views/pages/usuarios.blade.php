@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+        <button class="btn btn-info" 
+                        onclick="location.href= '/usuarios/create' ">
+                        Añadir Usuario</button>
     
         <table class="table">
             <thead>
@@ -27,8 +30,13 @@
                     @else
                         <td>Usuario</td>
                     @endif
-                        <td><button type="button" class="btn btn-danger">Deshabilitar</button>
-                            <button type="button" class="btn btn-success">Guardar</button>
+                        <td>
+                                
+                        <button class="btn btn-danger" 
+                        onclick="location.href= '/usuarios/{{$user->id}}/deshabilitar' ">
+                        Deshabilitar</button>
+                        
+                            <button type="button" class="btn btn-success">Editar</button>
                         </td>
                     </tr>
             

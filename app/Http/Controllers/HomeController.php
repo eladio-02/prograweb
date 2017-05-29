@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 
+use Illuminate\Support\Facades\DB;
+
 class HomeController extends Controller
 {
     /**
@@ -30,5 +32,45 @@ class HomeController extends Controller
     public function show()
     {
         return view('pages/usuarios', ['usuarios' => User::simplePaginate(10) ] );
+    }
+    public function destroy($id)
+    {
+        if(User::find($id)){
+            
+            DB::table('users')->where('id', '=', $id)->delete();
+            
+            return redirect('/usuarios');
+            //return view('pages/usuarios', ['usuarios' => User::simplePaginate(10) ] );
+        } else {
+            return redirect('/usuarios');
+            //return view('pages/usuarios', ['usuarios' => User::simplePaginate(10) ] );
+        }
+    }
+      /**
+    * Create a new user instance after a valid registration.
+    *
+    * @param  array  $data
+    * @return User
+    */
+   public function create(array $data)
+   {
+       $tipo=0;
+       if($data['tipo']=="Administrador"){
+           $tipo = 1;
+
+       }
+
+       User::create([
+           'name' => $data['name'],
+           'email' => $data['email'],
+           'password' => bcrypt($data['password']),
+           'Tipo' => $tipo,
+           'active' => 1,
+       ]);
+       return redirect('/usuarios'); 
+   }
+    public function createUser()
+    {
+        return view('pages/createuser');
     }
 }
