@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\User;
 
 use Illuminate\Support\Facades\DB;
@@ -52,10 +53,12 @@ class HomeController extends Controller
     * @param  array  $data
     * @return User
     */
-   public function create(array $data)
+   public function store()///array $data)
    {
+       $data = Input::all();
+       print_r($data);
        $tipo=0;
-       if($data['tipo']=="Administrador"){
+       if($data['Tipo']=="Administrador"){
            $tipo = 1;
 
        }
@@ -69,6 +72,7 @@ class HomeController extends Controller
        ]);
        return redirect('/usuarios'); 
    }
+
     public function createUser()
     {
         return view('pages/createuser');
