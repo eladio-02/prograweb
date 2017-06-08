@@ -36,7 +36,7 @@
                         onclick="location.href= '/usuarios/{{$user->id}}/deshabilitar' ">
                         Deshabilitar</button>
                         
-                            <button type="button" class="btn btn-success">Editar</button>
+                            <button type="button" class="btn btn-success" onclick="location.href= '/usuarios/edit/{{$user->id}}' ">Editar</button>
                         </td>
                     </tr>
             

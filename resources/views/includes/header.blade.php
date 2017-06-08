@@ -32,6 +32,7 @@
                         </ul>
                 </li>
             @endif
+            <li><a href="/home/contact">Contacto</a></li>
         </ul>
     </div>
 </div>

@@ -47,16 +47,15 @@ class HomeController extends Controller
             //return view('pages/usuarios', ['usuarios' => User::simplePaginate(10) ] );
         }
     }
-      /**
-    * Create a new user instance after a valid registration.
-    *
-    * @param  array  $data
-    * @return User
-    */
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
    public function store()///array $data)
    {
        $data = Input::all();
-       print_r($data);
        $tipo=0;
        if($data['Tipo']=="Administrador"){
            $tipo = 1;
@@ -76,5 +75,67 @@ class HomeController extends Controller
     public function createUser()
     {
         return view('pages/createuser');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+     
+    public function contact()
+    {
+        return view('pages/contact');
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function sendContact()
+    {
+        return redirect('home');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($cuponId)
+    {
+        return view('pages/edituser', ['user' => User::find($id)]);
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function update($id)
+    {
+
+        $data = Input::all();
+        $user = User::find($id);
+        $tipo=0;
+        if($data['Tipo']=="Administrador"){
+            $tipo = 1;
+
+        }
+
+        if(!is_null($user)){ 
+            $user->name = $data['name'];
+            $user->email = $data['email'];
+            $user->password = bcrypt($data['password']);
+            $user->Tipo = $tipo;
+            $user->active = 1;
+            $user->save();
+        }
+
+        return redirect('/usuarios');
     }
 }

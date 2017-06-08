@@ -1,12 +1,11 @@
 <?php
 
 namespace App;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
 class Cupones extends Model
 {
-    use Notifiable;
+    
     
     /**
      * The attributes that are mass assignable.
@@ -14,9 +13,10 @@ class Cupones extends Model
      * @var array
      */
     protected $table = 'cupon';
+    public $timestamps = false;
     protected $fillable = [
     'title', 'subtitle','imgsrc','price','normalprice','save', 'sold', 'city', 'period',
-    'category', 'websitesrc', 'active', 'pageid',
+    'category', 'websitesrc', 'active', 'id',
     ];
 
     /**
