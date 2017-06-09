@@ -105,7 +105,7 @@ class HomeController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($cuponId)
+    public function edit($id)
     {
         return view('pages/edituser', ['user' => User::find($id)]);
     }

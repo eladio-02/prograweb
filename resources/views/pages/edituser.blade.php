@@ -5,7 +5,6 @@
         <div class="col-lg-8">
     
         
-
             {{ Form::open(array('action' => array('HomeController@update', $user->id), 'method' => 'PUT', 'class' => 'form-horizontal')) }}
 
             
