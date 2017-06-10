@@ -20,6 +20,9 @@ Route::get('/cupon/edit/{cuponId}','CuponesController@edit');
 Route::put('/cupon/update/{cuponId}','CuponesController@update');
 Route::get('/cupon/delete/{cuponId}','CuponesController@destroy');
 
+Route::get('/cupon/mail/{id}','CuponesController@sendEmailReminder');
+
+
 
 Route::get('/promocion/','PromocionesController@index');
 Route::get('/promocion/create','PromocionesController@create');

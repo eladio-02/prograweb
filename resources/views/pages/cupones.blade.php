@@ -21,10 +21,17 @@
                 <div class="row pull-right">
                       @if (!Auth::guest())
                         @if (Auth::user()->Tipo==1)
-                      <button type="button" class="btn btn-info btn-xs glyphicon glyphicon-pencil" onclick="location.href= '/cupon/edit/{{$cu->id}}' "></button>
+                      <button type="button" class="btn btn-warning btn-xs glyphicon glyphicon-pencil" onclick="location.href= '/cupon/edit/{{$cu->id}}' "></button>
                       <button type="button" class="btn btn-danger btn-xs glyphicon glyphicon-trash" onclick="location.href='{{action('CuponesController@destroy', ['id' => $cu->id]) }}'"></button>
+                      <button type="button" class="btn btn-info btn-xs glyphicon glyphicon-envelope" onclick="location.href='{{action('CuponesController@sendEmailReminder', ['id' => Auth::user()->id]) }}'"></button>
+                        
+                      @else
+                        <button type="button" class="btn btn-info btn-xs glyphicon glyphicon-envelope" onclick="location.href='{{action('CuponesController@sendEmailReminder', ['id' => Auth::user()->id]) }}'"></button>
                       @endif
+
+                         
                       @endif
+                      
                 </div>                  
                 
 
@@ -42,16 +49,22 @@
                 <h2 class=" center-block">{{ $cu->price }}</h2>
                 <div class="row pull-right">
                 @if (!Auth::guest())
+
                         @if (Auth::user()->Tipo==1)
-                      <button type="button" class="btn btn-info btn-xs glyphicon glyphicon-pencil" onclick="location.href= '/cupon/edit/{{$cu->id}}' " disabled="true"></button>
+                      <button type="button" class="btn btn-warning btn-xs glyphicon glyphicon-pencil" onclick="location.href= '/cupon/edit/{{$cu->id}}' " disabled="true"></button>
                       <button type="button" class="btn btn-success btn-xs glyphicon glyphicon-ok" onclick="location.href='{{action('CuponesController@destroy', ['id' => $cu->id]) }}'"></button>
                       @endif
+
+                      
                       @endif
                 </div>                  
                 
             </div>
+                        
+            @endif            
+ 
             @endif
-            @endif
+      
         @endif
         @endforeach
 

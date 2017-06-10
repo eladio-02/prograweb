@@ -3,15 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Cupones;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
-
+use Mail;
 
 
 class CuponesController extends Controller
 {
+        /**
+     * Send an e-mail reminder to the user.
+     *
+     * @param  Request  $request
+     * @param  int  $id
+     * @return Response
+     */
+
+    public function sendEmailReminder($id)
+    {
+        $user = User::findOrFail($id);
+
+        Mail::send('emails.contact', ['user' => $user], function ($m) use ($user) {
+            
+            $m->from('hello@app.com', 'Your Application');
+
+            $m->to($user->email, $user->name)->subject('Your Reminder!');
+        });
+        return redirect('/cupones');
+    }
     
     /**
      * Display a listing of the resource.
