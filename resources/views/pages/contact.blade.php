@@ -25,14 +25,14 @@
                 <div class="form-group">
                     {!! Form::label('email', 'Email:', ['class' => 'col-lg-2 control-label']) !!}
                     <div class="col-lg-10">
-                        {!! Form::email('email', $value = null, ['class' => 'form-control', 'placeholder' => 'email']) !!}
+                        {!! Form::text('email', $value = null, ['class' => 'form-control', 'placeholder' => 'email']) !!}
                     </div>
                 </div>
                 <!-- Message -->
                 <div class="form-group">
                     {!! Form::label('message', 'Mensaje:', ['class' => 'col-lg-2 control-label']) !!}
                     <div class="col-lg-10">
-                        <textarea class="form-control" rows="5" id="message" placeholder="Mensaje"></textarea>
+                    {!! Form::text('message', $value = null, ['class' => 'form-control', 'placeholder' => 'mensaje']) !!}
                     </div>
                 </div>
                 

@@ -32,6 +32,8 @@ Route::get('/promocion/edit/{promoId}','PromocionesController@edit');
 Route::put('/promocion/update/{promoId}','PromocionesController@update');
 Route::get('/promocion/delete/{promoId}','PromocionesController@destroy');
 
+Route::get('/promocion/mail/{id}/{promoidmail}','PromocionesController@sendEmailReminder');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/contact', 'HomeController@contact');

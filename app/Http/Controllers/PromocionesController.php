@@ -12,18 +12,27 @@ use Mail;
 class PromocionesController extends Controller
 {
 
+       /**
+     * Send an e-mail reminder to the user.
+     *
+     * @param  Request  $request
+     * @param  int  $id
+     * @return Response
+     */
+
     public function sendEmailReminder($id,$promoidmail)
     {
         $user = User::findOrFail($id);
         $cupon = Promociones::findOrFail($promoidmail);
 
-        Mail::send('emails.contact', ['user' => $user, 'cupon' => $cupon], function ($m) use ($user) {
+        Mail::send('emails.contactpromocion', ['user' => $user, 'cupon' => $cupon], function ($m) use ($user) {
             
             $m->from('hello@app.com', 'Información de la promoción');
 
             $m->to($user->email, $user->name)->subject("Información de la promoción");
         });
         return redirect('/promocion');
+
     }
 
     /**

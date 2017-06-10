@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 use App\User;
+use Mail;
 
 use Illuminate\Support\Facades\DB;
 
@@ -30,6 +32,26 @@ class HomeController extends Controller
         return view('home');
     }
     
+       /**
+     * Send an e-mail reminder to the user.
+     *
+     * @param  Request  $request
+     * @param  int  $id
+     * @return Response
+     */
+
+    public function sendContact()
+    {
+        $data = Input::all();
+        Mail::send('emails.contactuser', ['data' => $data], function ($m) {
+            $data2 = Input::all();
+            $m->from('hello@app.com', 'Información');
+
+            $m->to('prograweb2017@gmail.com', $data2['name'])->subject("Información");
+        });
+        return redirect('/cupones');
+    }
+
     public function show()
     {
         return view('pages/usuarios', ['usuarios' => User::simplePaginate(10) ] );
@@ -87,17 +109,7 @@ class HomeController extends Controller
     {
         return view('pages/contact');
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function sendContact()
-    {
-        return redirect('home');
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
