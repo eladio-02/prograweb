@@ -3,13 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Promociones;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
-
+use Mail;
 class PromocionesController extends Controller
 {
+
+    public function sendEmailReminder($id,$promoidmail)
+    {
+        $user = User::findOrFail($id);
+        $cupon = Promociones::findOrFail($promoidmail);
+
+        Mail::send('emails.contact', ['user' => $user, 'cupon' => $cupon], function ($m) use ($user) {
+            
+            $m->from('hello@app.com', 'Información de la promoción');
+
+            $m->to($user->email, $user->name)->subject("Información de la promoción");
+        });
+        return redirect('/promocion');
+    }
+
     /**
      * Display a listing of the resource.
      *

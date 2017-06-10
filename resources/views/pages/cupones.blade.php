@@ -23,10 +23,10 @@
                         @if (Auth::user()->Tipo==1)
                       <button type="button" class="btn btn-warning btn-xs glyphicon glyphicon-pencil" onclick="location.href= '/cupon/edit/{{$cu->id}}' "></button>
                       <button type="button" class="btn btn-danger btn-xs glyphicon glyphicon-trash" onclick="location.href='{{action('CuponesController@destroy', ['id' => $cu->id]) }}'"></button>
-                      <button type="button" class="btn btn-info btn-xs glyphicon glyphicon-envelope" onclick="location.href='{{action('CuponesController@sendEmailReminder', ['id' => Auth::user()->id]) }}'"></button>
+                        <button type="button" class="btn btn-info btn-xs glyphicon glyphicon-envelope" onclick="location.href='{{action('CuponesController@sendEmailReminder', [ 'id' => Auth::user()->id,'cuponidmail'=>$cu->id ]) }}'"></button>
                         
                       @else
-                        <button type="button" class="btn btn-info btn-xs glyphicon glyphicon-envelope" onclick="location.href='{{action('CuponesController@sendEmailReminder', ['id' => Auth::user()->id]) }}'"></button>
+                        <button type="button" class="btn btn-info btn-xs glyphicon glyphicon-envelope" onclick="location.href='{{action('CuponesController@sendEmailReminder', [ 'id' => Auth::user()->id,'cuponidmail'=>$cu->id ]) }}'"></button>
                       @endif
 
                          

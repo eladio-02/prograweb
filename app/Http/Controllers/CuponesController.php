@@ -21,15 +21,16 @@ class CuponesController extends Controller
      * @return Response
      */
 
-    public function sendEmailReminder($id)
+    public function sendEmailReminder($id,$cuponidmail)
     {
         $user = User::findOrFail($id);
+        $cupon = Cupones::findOrFail($cuponidmail);
 
-        Mail::send('emails.contact', ['user' => $user], function ($m) use ($user) {
+        Mail::send('emails.contact', ['user' => $user, 'cupon' => $cupon], function ($m) use ($user) {
             
-            $m->from('hello@app.com', 'Your Application');
+            $m->from('hello@app.com', 'Información del cupón');
 
-            $m->to($user->email, $user->name)->subject('Your Reminder!');
+            $m->to($user->email, $user->name)->subject("Información del cupón");
         });
         return redirect('/cupones');
     }

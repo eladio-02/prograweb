@@ -7,7 +7,16 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-    <strong>Bienvenido</strong>
+    
+    <div id="content" class="col-md-3 well">
+                {{ $cupon->title }}
+                <hr>
+                <img class="img-responsive" src={{ $cupon->imgsrc}} alt="Imagen descriptiva"><br>
+                <h2 class=" center-block">{{ $cupon->price }}</h2>            
+                
+
+                
+            </div>
     
     </body>
 </html>
